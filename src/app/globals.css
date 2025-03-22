@@ -1,15 +1,13 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +20,46 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, sans-serif);
+  background-color: #f7fafc;
+  min-height: 100vh;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-tea py-2 px-4 rounded-lg text-white hover:bg-tea-dark transition-colors;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tea focus:border-tea outline-none transition;
+  }
+
+  .card {
+    @apply bg-white p-6 rounded-lg shadow-card hover:shadow-card-hover transition-shadow;
+  }
+}
+
+/* globals.css */
+:root {
+  /* Light theme (default) */
+  --background: #ffffff;
+  --text: #333333;
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+  --accent: #f97316;
+  
+  /* Other variables */
+  --border-radius: 0.5rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+}
+
+/* Dark theme class that can be toggled */
+.dark-theme {
+  --background: #1f2937;
+  --text: #f3f4f6;
+  --primary: #818cf8;
+  --secondary: #a78bfa;
+  --accent: #fb923c;
 }
